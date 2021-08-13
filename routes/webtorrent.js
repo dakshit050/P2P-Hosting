@@ -4,36 +4,36 @@ const path = require('path');
 const fse = require('fs-extra');
 var client = new WebTorrent();
 const fs = require('fs');
-router.get('/:id', async (req, res) => {
-    var Id = req.params.id;
-    try {
-        if (!fs.existsSync(path.join(__dirname, '..', 'data', Id))) {
-            client.add('magnet:?xt=urn:btih:' + Id + '&tr=wss%3A%2F%2Ftracker.btorrent.xyz&tr=wss%3A%2F%2Ftracker.fastcast.nz&tr=wss%3A%2F%2Ftracker.openwebtorrent.com', function (torrent) {
-                console.log("Get it");
-                if (!fs.existsSync(path.join(__dirname, '..', 'data', Id))) {
-                    fs.mkdir(path.join(__dirname, '..', 'data', Id), (err) => {
-                        if (err) {
-                            return console.error(err);
-                        }
-                        torrent.files.forEach(element => {
-                            element.getBuffer(function (err, buffer) {
-                                if (err) throw err
-                                fs.appendFile(path.join(__dirname, '..', 'data', Id, element.name), buffer, function (err) {
-                                    if (err) throw err;
-                                    console.log('Saved!');
+router.get('/:id',async (req,res)=>{
+    var Id=req.params.id;
+        try {
+            if (!fs.existsSync(path.join(__dirname,'..','data',Id))){
+                client.add('magnet:?xt=urn:btih:'+Id +'&tr=wss%3A%2F%2Ftracker.btorrent.xyz&tr=wss%3A%2F%2Ftracker.fastcast.nz&tr=wss%3A%2F%2Ftracker.openwebtorrent.com', function (torrent) {
+                    console.log("Get it");
+                    if (!fs.existsSync(path.join(__dirname,'..','data',Id))){
+                        fs.mkdir(path.join(__dirname,'..','data',Id), (err) => {
+                            if (err) {
+                                return console.error(err);
+                            }
+                            torrent.files.forEach(element => {
+                                element.getBuffer(async function (err, buffer) {
+                                    if (err) throw err
+                                    fs.appendFile(path.join(__dirname,'..','data',Id,element.name),buffer, function (err) {
+                                        if (err) throw err;
+                                        console.log('Saved!');
+                                    }); 
                                 });
                             });
                         });
-                    });
-                }
-                res.sendFile(path.join(__dirname, '..', 'data', Id, 'index.html'));
-            });
-        } else {
-            res.redirect(`http://localhost:5000/data/${Id}/`);
+                    }
+                    res.send("Your site downloaded please refresh to see it");
+                }); 
+            }else{
+                res.redirect(`http://localhost:5000/data/${Id}/`);
+            }  
+        } catch (error) {
+            res.send(error);
         }
-    } catch (error) {
-        res.send(error);
-    }
 });
 router.post('/', (req, res) => {
     var input = path.join("..", "..", "Demo");
