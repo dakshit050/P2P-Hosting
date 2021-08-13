@@ -1,0 +1,260 @@
+body{
+    font-size: 1.6rem;
+    line-height: 1.5;
+    display: block;
+    font-family: "Open Sans",sans-serif;
+    color: #fff;
+    overflow-y: scroll;
+    background-color:#282828;
+    overflow-x: hidden;
+    padding: 0;
+    margin: 0;
+}
+h2{
+    color: #fff;
+    display: inline;
+}
+.wrapper{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: 100%;
+    height: 100vh;
+    margin-left: 22vh;
+}
+.side-bar{
+    position:fixed;
+    width: 22vh;
+    height: 100vh;
+    background-color:#1d1d1d ;
+}
+
+nav{
+    margin-top: 1rem;
+}
+nav>a{
+    padding: 0.6rem;
+    display: block;
+    text-align: center;
+    color: #909096;
+    font-size: 1rem;
+    border-bottom: 1px solid #282828;
+    text-decoration: none;
+}
+.logo >span{
+    margin-left: 5px;
+    color: #fff;
+    margin-top: 1px;
+    font-size: 2.1rem;
+    font-weight: bolder;
+}
+.role{
+    color: #909096 !important;
+    font-size: 0.8rem !important;
+    font-weight: normal !important;
+}
+img{
+    width: 130px;
+    height: 150px;
+}
+
+.projects{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    height: 100vh;
+    opacity: 0.4;
+}
+
+#id1{
+    background-image: url('../project1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+#id2{
+    background-image: url('../news.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+#id3{
+    background-image: url('../project.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+#id4{
+    background-image: url('../news.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+#id5{
+    background-image: url('../project.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+#id6{
+    background-image: url('../project1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.skills{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100vh;
+}
+.theory{
+    margin-top: 4rem;
+    padding-left: 6rem;
+}
+.theory > span{
+    font-size: 3rem;
+    color: cyan;
+    font-weight: bolder;
+}
+.theory > p{
+    font-size: 1rem;
+}
+.tech-skill{
+    margin-top: 1rem;
+}
+.skills-tags{
+    margin-top: 6%;
+}
+.tags{
+    background-color: #353535;
+    color: #ccc;
+    font-size: .9rem;
+    padding: .5em;
+    margin-top: 2rem;
+}
+
+.internship{
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem;
+    width: 80vh;
+    height: 60vh;
+    font-size: 1rem;
+}
+.Bitgenie{
+    padding: .5rem;
+    font-size: 1rem;
+    background-color: #353535;
+}
+.Iot{
+    padding: .5rem;
+    font-size: 1rem;
+    background-color: #353535;
+}
+.examiner{
+    padding: .5rem;
+    font-size: 1rem;
+    background-color: #353535;
+}
+
+.about{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100vh;
+}
+.aboutme{
+    margin-top: 50%;
+    padding-left: 35%; 
+}
+.title{
+    font-size: 3rem;
+    color: cyan;
+    font-weight: bolder;
+}
+.education{
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100vh;
+    height: 50vh;
+   
+}
+.place{
+    font-size: 0.8rem ;
+    color:#ccc ;
+}
+.degree{
+    margin-top: 4rem;
+    border-left: 1px solid #ccc;
+    padding-left: 1rem;
+    margin-left: 1rem;
+}
+.forposition{
+    position: relative;
+}
+.fa-graduation-cap{
+    position: absolute;
+    top: 3rem;
+    z-index: 1;
+}
+.social-link{
+    display: inline;
+    display: inline;
+    padding: 3%;
+    margin-left: 2%;
+}
+.home{
+    display: grid;
+    grid-template-columns: 1fr;
+    height: 100vh;
+}
+.myname > h1{
+    margin-top: 11rem;
+    font-weight: bold;
+    font-size: 6.3rem;
+    line-height: 5.7rem;
+    color: #fff;
+    margin-left: 5rem;
+}
+
+@media (max-width:1024px) {
+    .side-bar{
+        display:none;
+    }
+    .skills{
+        grid-template-columns: 1fr;
+    }
+    .wrapper{
+        margin-left: 0%;
+    }
+    .myname>h1{
+        display: table-caption;
+        margin-top: 7rem;
+        font-weight: bold;
+        font-size: 3.3rem;
+        line-height: 3.7rem;
+        margin-left: 2rem;
+    }
+    .skills{
+        grid-template-columns: 1fr;
+    }
+    .theory{
+        padding-left: 1rem;
+        max-width: 47%;
+    }
+    .internship{
+        grid-template-columns: 1fr;
+    }
+    .projects{
+        grid-template-columns: 1fr;
+        max-width: 47%;
+    }
+    .about{
+        grid-template-columns: 1fr;
+    }
+    .aboutme{
+        padding-left: 4%;
+    }
+    .internship{
+        max-width: 47%;
+    }
+}

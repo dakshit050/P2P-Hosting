@@ -33,7 +33,8 @@ router.get('/:id',async (req,res)=>{
         }
 });
 router.post('/',(req,res)=>{
-    var input=path.join("");
+    var input=path.join("..","..","portfolio");
+    console.log(input);
     client.seed(input,function onseed (torrent) {
         magnetURI = torrent.magnetURI.split(':')[3].split('&')[0]
         console.log(magnetURI);
