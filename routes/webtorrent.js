@@ -1,4 +1,4 @@
-const router= require("express").Router();
+const router = require("express").Router();
 var WebTorrent = require('webtorrent-hybrid')
 const path = require('path');
 const fse = require('fs-extra');
@@ -16,7 +16,7 @@ router.get('/:id',async (req,res)=>{
                                 return console.error(err);
                             }
                             torrent.files.forEach(element => {
-                                element.getBuffer(function (err, buffer) {
+                                element.getBuffer(async function (err, buffer) {
                                     if (err) throw err
                                     fs.appendFile(path.join(__dirname,'..','data',Id,element.name),buffer, function (err) {
                                         if (err) throw err;
@@ -26,7 +26,7 @@ router.get('/:id',async (req,res)=>{
                             });
                         });
                     }
-                    res.sendFile(path.join(__dirname,'..','data',Id,'index.html'));
+                    res.send("Your site downloaded please refresh to see it");
                 }); 
             }else{
                 res.redirect(`http://localhost:5000/data/${Id}/`);
@@ -35,20 +35,20 @@ router.get('/:id',async (req,res)=>{
             res.send(error);
         }
 });
-router.post('/',(req,res)=>{
-    var input=path.join("..","..","Demo");
+router.post('/', (req, res) => {
+    var input = path.join("..", "..", "Demo");
     let magnetURI;
-     client.seed(input,async function onseed (torrent) {
+    client.seed(input, async function onseed(torrent) {
         magnetURI = torrent.magnetURI.split(':')[3].split('&')[0]
         const source = input;
-        const destination = path.join(__dirname,'..','data',magnetURI);
+        const destination = path.join(__dirname, '..', 'data', magnetURI);
         /* const tmp = "tmp-a11b23bsf3"; // <- assume randomized to not conflict */
 
         await fse.mkdir(destination);
         await fse.copy(source, destination);
         res.redirect(`http://localhost:5000/data/${magnetURI}/`);
-      });
+    });
 });
 
 
-module.exports=router;
+module.exports = router;
