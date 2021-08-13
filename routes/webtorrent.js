@@ -1,6 +1,7 @@
 const router= require("express").Router();
 var WebTorrent = require('webtorrent-hybrid')
 const path = require('path');
+const fse = require('fs-extra');
 var client = new WebTorrent();
 const fs = require('fs');
 router.get('/:id',async (req,res)=>{
@@ -33,13 +34,18 @@ router.get('/:id',async (req,res)=>{
         }
 });
 router.post('/',(req,res)=>{
-    var input=path.join("..","..","portfolio");
-    console.log(input);
-    client.seed(input,function onseed (torrent) {
+    var input=path.join("..","..","Demo");
+    let magnetURI;
+     client.seed(input,async function onseed (torrent) {
         magnetURI = torrent.magnetURI.split(':')[3].split('&')[0]
-        console.log(magnetURI);
+        const source = input;
+        const destination = path.join(__dirname,'..','data',magnetURI);
+        /* const tmp = "tmp-a11b23bsf3"; // <- assume randomized to not conflict */
+
+        await fse.mkdir(destination);
+        await fse.copy(source, destination);
+        res.redirect(`http://localhost:5000/data/${magnetURI}/`);
       });
-      res.send("Done");
 });
 
 
