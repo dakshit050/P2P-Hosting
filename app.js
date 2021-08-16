@@ -9,6 +9,7 @@ app.set('view engine', 'ejs');
 app.use('/hostnew',webtorrent);
 app.use('/data',showwebpage);
 app.use('/frontend', frontend)
+app.use('/css',express.static('css'))
 const PORT = 5000;
 app.listen(PORT, () => {
 	console.log("Server started ");
