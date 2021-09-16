@@ -8,9 +8,9 @@
 <body>
     <div class="wrapper">
         <h2>File Upload</h2>
-        <form id="file-upload">
+        <form id="file-upload" action="/hostnew" method="POST" enctype="multipart/form-data">
             <i class="fas fa-cloud-upload-alt"></i>
-            <input class="file-input" type="file" name="file" >
+            <input class="file-input" type="file" name="file" multiple >
             <button class="submit">Submit</button>
         </form>
     </div>

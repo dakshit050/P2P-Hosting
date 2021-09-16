@@ -9,7 +9,6 @@ router.get('/:id',async (req,res)=>{
         try {
             if (!fs.existsSync(path.join(__dirname,'..','data',Id))){
                 client.add('magnet:?xt=urn:btih:'+Id +'&tr=wss%3A%2F%2Ftracker.btorrent.xyz&tr=wss%3A%2F%2Ftracker.fastcast.nz&tr=wss%3A%2F%2Ftracker.openwebtorrent.com', function (torrent) {
-                    console.log("Get it");
                     if (!fs.existsSync(path.join(__dirname,'..','data',Id))){
                         fs.mkdir(path.join(__dirname,'..','data',Id), (err) => {
                             if (err) {
@@ -36,16 +35,22 @@ router.get('/:id',async (req,res)=>{
         }
 });
 router.post('/', (req, res) => {
+    var allfile=req.files;
     var input = path.join("..", "..", "Demo");
     let magnetURI;
     client.seed(input, async function onseed(torrent) {
         magnetURI = torrent.magnetURI.split(':')[3].split('&')[0]
         const source = input;
         const destination = path.join(__dirname, '..', 'data', magnetURI);
-        /* const tmp = "tmp-a11b23bsf3"; // <- assume randomized to not conflict */
-
         await fse.mkdir(destination);
-        await fse.copy(source, destination);
+        allfile.file.forEach(input_file=>{
+            fs.writeFile(path.join(destination,input_file.name),input_file.data.toString(), (err) => {
+                if(!err) {
+                    console.log('Data written')
+                    }
+            });
+        })
+        //await fse.copy(source, destination);
         res.redirect(`http://localhost:5000/data/${magnetURI}/`);
     });
 });
