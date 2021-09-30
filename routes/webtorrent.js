@@ -35,22 +35,24 @@ router.get('/:id',async (req,res)=>{
         }
 });
 router.post('/', (req, res) => {
-    var allfile=req.files;
-    var input = path.join("..", "..", "Demo");
+    //var allfile=req.files;
+  //  var input = path.join("..","..","webdev","Demo");
+    var input = req.body.path;
+   /*  console.log(path); */
     let magnetURI;
     client.seed(input, async function onseed(torrent) {
         magnetURI = torrent.magnetURI.split(':')[3].split('&')[0]
         const source = input;
         const destination = path.join(__dirname, '..', 'data', magnetURI);
         await fse.mkdir(destination);
-        allfile.file.forEach(input_file=>{
+        /* allfile.file.forEach(input_file=>{
             fs.writeFile(path.join(destination,input_file.name),input_file.data.toString(), (err) => {
                 if(!err) {
                     console.log('Data written')
                     }
             });
-        })
-        //await fse.copy(source, destination);
+        }) */
+        await fse.copy(source, destination);
         res.redirect(`http://localhost:5000/data/${magnetURI}/`);
     });
 });
