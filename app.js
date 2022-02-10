@@ -16,7 +16,7 @@ app.use(
 	})
 );
 mongoose.connect(
-	"mongodb+srv://admin:t3USfYO9PSodKH5o@cluster0.otn0s.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+	process.env.MongoURI,
 	{
 		useNewUrlParser: true,
 		useUnifiedTopology: true,
