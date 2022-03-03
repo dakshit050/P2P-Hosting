@@ -8,7 +8,7 @@ passport.use(
 			usernameField: "email",
 		},
 		async function (email, password, done) {
-			const user = await Users.findOne({ email: email });
+			const user = await Users.findOne({ "Email": email });
 			if (!user) {
 				return done(null, false, { message: "Email Or Password Does not match" });
 			}

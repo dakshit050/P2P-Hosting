@@ -36,7 +36,7 @@ routes.post("/register", async (req, res) => {
 			password2,
 		});
 	} else {
-		const user = await Users.findOne({ email: email });
+		const user = await Users.findOne({ "Email": email });
 		if (user) {
 			errors.push({ msg: "Email already exists" });
 			return res.render("register", {

@@ -10,7 +10,7 @@ router.get("/", async function (req, res) {
 });
 
 router.get("/mysites", async function (req, res) {
-	const MySites = await AllSites.find({ owner: req.session.passport.user });
+	const MySites = await AllSites.find({ "owner": req.session.passport.user });
 	res.render("home", {
 		data: MySites,
 	});
