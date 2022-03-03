@@ -6,6 +6,26 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 	</head>
 	<body>
-		<div class="wrapper"><%= data %></div>
+		<div class="container">
+			<div class="sidebar-allsites">
+				<h1>All Sites</h1>
+				<% data.forEach(function(d){ %>
+					<% const url = "http://localhost:5000/data/"+ d.infoHash %>
+					 <a href=<%=url%> target="_blank" class="site-name">
+							<%= d.Name %>
+						</a>
+				<% }) %>
+			</div>
+			<div class="middlebar-your-downloads">
+				<a href="http://localhost:5000/frontend/" target="_blank">Host New Site</a>
+			</div>
+			<div class="rightbar-"></div>
+		</div>
 	</body>
+	<script>
+		function handleRedirect(url){
+			console.log(url)
+			// window.location = url
+		}
+	</script>
 </html>
