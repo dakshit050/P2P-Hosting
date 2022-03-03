@@ -3,7 +3,7 @@ const AllSitesSchema = new mongoose.Schema(
 	{
 		Name: { type: String, default: null },
 		infoHash: { type: String, default: null },
-		owner: { type: String, default: null },
+		owner: { type: mongoose.Schema.Types.ObjectId, ref: "Users" },
 	},
 	{
 		timestamps: true,
