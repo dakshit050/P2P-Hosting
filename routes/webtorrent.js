@@ -46,18 +46,21 @@ router.get("/:id", async (req, res) => {
 router.post("/", (req, res) => {
 	try {
 		let input = req.body.path;
+		let name = req.body.name;
 		let magnetURI;
 		client.seed(input, { name: "p2p_hosting" }, async function onseed(torrent) {
 			magnetURI = torrent.magnetURI.split(":")[3].split("&")[0];
 			const source = input;
 			const destination = path.join(__dirname, "..", "data", magnetURI);
-			await fse.mkdir(destination);
-			await fse.copy(source, destination);
-			let hostNew = AllSites();
-			hostNew.Name = "MySite 1";
-			hostNew.infoHash = magnetURI;
-			hostNew.owner = req.session.passport.user;
-			hostNew.save();
+			if (!fs.existsSync(path.join(__dirname, "..", "data", magnetURI))) {
+				await fse.mkdir(destination);
+				await fse.copy(source, destination);
+				let hostNew = AllSites();
+				hostNew.Name = name;
+				hostNew.infoHash = magnetURI;
+				hostNew.owner = req.session.passport.user;
+				hostNew.save();
+			}
 			res.redirect(`http://localhost:5000/data/${magnetURI}/`);
 		});
 	} catch (error) {
