@@ -86,7 +86,7 @@ routes.post("/register", async (req, res) => {
 
 routes.post("/login", (req, res, next) => {
 	passport.authenticate("local", {
-		successRedirect: "/sites/allsites",
+		successRedirect: "/sites",
 		failureRedirect: "/users/login",
 		failureFlash: true,
 	})(req, res, next);
