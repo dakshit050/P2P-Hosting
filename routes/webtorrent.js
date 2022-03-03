@@ -5,13 +5,14 @@ const fse = require("fs-extra");
 var client = new WebTorrent();
 const AllSites = require("../models/websites.model");
 const fs = require("fs");
+const Users = require("../models/users.model");
 router.get("/:id", async (req, res) => {
 	var Id = req.params.id;
 	try {
 		if (!fs.existsSync(path.join(__dirname, "..", "data", Id))) {
 			client.add(
 				"magnet:?xt=urn:btih:" + Id + "&tr=wss%3A%2F%2Ftracker.btorrent.xyz&tr=wss%3A%2F%2Ftracker.fastcast.nz&tr=wss%3A%2F%2Ftracker.openwebtorrent.com",
-				function (torrent) {
+				async function (torrent) {
 					if (!fs.existsSync(path.join(__dirname, "..", "data", Id))) {
 						fs.mkdir(path.join(__dirname, "..", "data", Id), (err) => {
 							if (err) {
@@ -28,6 +29,9 @@ router.get("/:id", async (req, res) => {
 							});
 						});
 					}
+					const user = await Users.findById(req.session.passport.user);
+					user.MyDownloads.push(Id);
+					await user.save();
 					res.send("Your site downloaded please refresh to see it");
 				}
 			);
@@ -52,6 +56,7 @@ router.post("/", (req, res) => {
 			let hostNew = AllSites();
 			hostNew.Name = "MySite 1";
 			hostNew.infoHash = magnetURI;
+			hostNew.owner = req.session.passport.user;
 			hostNew.save();
 			res.redirect(`http://localhost:5000/data/${magnetURI}/`);
 		});
