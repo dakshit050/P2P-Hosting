@@ -4,11 +4,19 @@
 		<title>Home</title>
 		<link href="../css/style.css" rel="stylesheet" type="text/css" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 	</head>
 	<body>
-		<div class="container">
+		<%- include('./partials/header'); %>
+		<div class="containers">
 			<div class="sidebar-allsites">
-				<h1>All Sites</h1>
+				<% if(isMySites){ %>
+					<h1>Your Hosted Sites</h1>
+				<% } %>
+				<% if(!isMySites){ %>
+					<h1>Global Sites</h1>
+				<% }%>
 				<% data.forEach(function(d){ %>
 					<% const url = "http://localhost:5000/data/"+ d.infoHash %>
 					 <a href=<%=url%> target="_blank" class="site-name">
@@ -16,16 +24,19 @@
 						</a>
 				<% }) %>
 			</div>
-			<div class="middlebar-your-downloads">
-				<a href="http://localhost:5000/frontend/" target="_blank">Host New Site</a>
+
+			
+			<div class="main-info">
+				<% if(isMySites){ %>
+					<div>Hey <%= currentUser.Name.split(" ")[0] %>, Seems Like you were looking for your hosted website, look on the left side of the screen :)</div>
+					<a href="http://localhost:5000/sites">Or wanna see the global sites hosted on our platform? Click me</a>					
+				<% } %>
+				<% if(!isMySites){ %>
+					<div>Welcome Back, <%= currentUser.Name.split(" ")[0] %></div>
+					<a href="http://localhost:5000/sites/mysites">Wanna see the list of your hosted sites? Click me</a>
+				<% }%>
 			</div>
-			<div class="rightbar-"></div>
+			<!-- <div class="rightbar-"></div> -->
 		</div>
 	</body>
-	<script>
-		function handleRedirect(url){
-			console.log(url)
-			// window.location = url
-		}
-	</script>
 </html>

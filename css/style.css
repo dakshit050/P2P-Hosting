@@ -1,41 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Amiri', serif;
+}
+:root{
+  --main-bg: linear-gradient(315deg,  #000000 0%, #434343 74%);
+  --gray-shade: #f4f0ec;
 }
 body {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  flex-direction: column;
   min-height: 100vh;
-  background: #6990f2;
+  background: var(--gray-shade);
 }
 
-.wrapper {
-  width: 430px;
-  background: #fff;
+.form-contain {
+  max-width: 500px !important;
+  background: var(--main-bg);
   border-radius: 5px;
+  margin-top:50px;
+  color: #fff;
   padding: 30px;
   box-shadow: 7px 7px 12px rgba(0, 0, 0, 0.05);
 }
-.wrapper h2 {
-  color: #6990f2;
+.form-contain h2 {
+  color: var(--main-bg);
   font-size: 27px;
   font-weight: 600;
   text-align: center;
 }
-.wrapper form {
-  height: 167px;
-  display: flex;
-  cursor: pointer;
-  margin: 30px 0;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  border-radius: 5px;
-  border: 2px dashed #6990f2;
+.form-contain i{
+  font-size: 50px;
+  margin-left: calc(50% - 50px);
+}
+.form-contain form {
+  width: 100%;
 }
 form :where(i, p) {
   color: #6990f2;
@@ -52,7 +52,56 @@ input {
   margin: 10px;
 }
 
-.container{
+.header{
+  height: 70px;
+  width:100%;
+  background: var(--main-bg);
+  box-shadow: 0px 16px 32px -16px rgba(0, 16, 75, 0.15);
+
+}
+.header nav{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+  align-items: center;
+}
+.header .brand{
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #fff;
+}
+.header nav ul {
+  display: flex;
+}
+.header nav ul li{
+  list-style: none;
+  color:var(--main-bg);
+  background-color: #fff;
+  box-shadow: 0px 16px 32px -16px rgba(0, 16, 75, 0.15);
+  margin: auto 10px;
+  border-radius: 4px;
+  transition: all .4s ease-in-out;
+  margin-top:15px;
+}
+.header nav ul li:hover{
+  background: var(--main-bg);
+  color: var(--gray-shade);
+}
+.header nav ul li a{
+  text-decoration: none;
+  color:var(--main-bg);
+}
+.header nav ul li:hover a,
+.header nav ul li:hover p{
+  color: #fff;
+}
+.header nav ul li p{
+  color: var(--main-bg);
+}
+
+.containers{
   width: 100%;
   display: flex;
 }
@@ -61,36 +110,45 @@ input {
   max-width: 50%;
   background: #fff;
   max-height: 100vh;
-  min-height: 100vh;
+  min-height: calc(100vh - 70px);
   padding:10px;
   text-align: center;
   overflow-y: auto;
-  box-shadow: 0px 16px 32px 5px rgba(0, 16, 75, 0.15);
+  box-shadow: 0px 50px 32px 5px rgba(0, 0, 0);
 }
 .sidebar-allsites .site-name{
-  background: #6990f2;
+  color: var(--gray-shade);
   border-radius: 50px;
-  color:#fff;
+  background: var(--main-bg);
   margin:20px auto;
   padding: 15px;
   text-align: center;
   cursor: pointer;
   display: block;
   text-decoration: none;
+  transition: all .4s ease-in-out;
   box-shadow: 0px 16px 32px -16px rgba(0, 16, 75, 0.15);
 }
-
-.middlebar-your-downloads{
-  width:450px;
-  max-width: 33%;
-  display: grid;
-  min-height: 100vh;
-  place-content: center;
+.sidebar-allsites .site-name:hover{
+  background: var(--gray-shade);
+  color: var(--main-bg);
 }
-
-.middlebar-your-downloads a{
+.main-info{
+  margin:auto;
+  width: calc(100% - 400px);
+  display: grid;
+  min-height: calc(100vh - 70px);
+  place-content: center;
+  text-align: center;
+  background-color: var(--gray-shade);
+}
+.main-info div{
+  font-size: 2rem;
+  font-weight: 700;
+}
+.main-info a{
   text-decoration: none;
-  color: #6990f2;
+  color: var(--main-bg);
   border-radius: 50px;
   background:#fff;
   margin:20px auto;
@@ -98,6 +156,12 @@ input {
   text-align: center;
   cursor: pointer;
   display: block;
+  color:var(--main-bg);
   text-decoration: none;
+  transition: all .4s ease-in-out;
   box-shadow: 0px 16px 32px -16px rgba(0, 16, 75, 0.15);
+}
+.main-info a:hover{
+  background: var(--main-bg);
+  color: var(--gray-shade);
 }

@@ -8,24 +8,25 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="Main-heading" style="color: #fff; font-weight: bold; font-size:24px;text-align: center; text-transform: uppercase;">
-        Decentralized Web Hosting / P2P hosting<br>
-        <span style="font-size: 16px;">Enter your project file path and host you website on a peer network</span>
-    </div>
-    <div class="wrapper" style="margin-top: -100px;">
-        <h2>File Upload</h2>
-        <form id="file-upload" action="/hostnew" method="POST">
-            <div>
-                <label>
-                    Enter New Name for website
-                </label>
-                <input type="text" name="name" />
-            </div>
+    <%- include('./partials/header'); %>
+        <div class="container form-contain">
+
             <i class="fas fa-cloud-upload-alt"></i>
-            <label for="path">Enter Project Path</label>
-            <input class="file-input" type="text" name="path" style="background-color: transparent; padding:5px; border-radius: 4px; width: 90%; margin: 10px;">
-            <button class="submit" style="background-color: #6990f2; padding:5px 10px; border: none; color:white;border-radius: 4px; cursor: pointer;">Host Website</button>
-        </form>
-    </div>
+            <h2 class="mb-3 mt-3">Let's get your static website hosted :)</h2>
+            <form id="file-upload" action="/hostnew" method="POST">
+                <div class="mb-3">
+                <label for="SiteName" class="form-label">Give Your Site A Nice Name</label>
+                <input type="text" class="form-control" id="SiteName" placeholder="Enter site name">
+            </div>
+            <div class="mb-3">
+                <label for="path" class="form-label">Where is your project located?? Enter it's path</label>
+                <input type="text" class="form-control" id="path" placeholder="Enter site name">
+            </div>
+            <!-- <label for="path"></label>
+                <input class="file-input" type="text" name="path" style="background-color: transparent; padding:5px; border-radius: 4px; width: 90%; margin: 10px;"> -->
+                <!-- <button class="submit" style="background-color: #6990f2; padding:5px 10px; border: none; color:white;border-radius: 4px; cursor: pointer;">Host Website</button> -->
+                <button type="submit" class="btn btn-primary mt-3">Let's Host it!!</button>
+            </form>
+        </div>
     
 </body>
