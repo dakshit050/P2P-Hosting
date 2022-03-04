@@ -13,14 +13,20 @@
 body {
   min-height: 100vh;
   background: var(--gray-shade);
+  overflow-x: hidden;
 }
 
+.wrapper{
+  min-height: calc(100vh - 70px);
+  width: 100%;
+  background-color: var(--gray-shade);
+  padding-top: 100px;
+}
 .form-contain {
   max-width: 500px !important;
-  background: var(--main-bg);
+  background: #fff;
   border-radius: 5px;
-  margin-top:50px;
-  color: #fff;
+  /* color: #fff; */
   padding: 30px;
   box-shadow: 7px 7px 12px rgba(0, 0, 0, 0.05);
 }
@@ -49,7 +55,7 @@ input {
 }
 
 .submit {
-  margin: 10px;
+  background: var(--main-bg) !important;
 }
 
 .header{
@@ -89,12 +95,20 @@ input {
   background: var(--main-bg);
   color: var(--gray-shade);
 }
-.header nav ul li a{
+.header nav ul li a,
+.header nav ul li button{
   text-decoration: none;
   color:var(--main-bg);
 }
+.header nav ul li button{
+  border: none;
+  border-radius: 4px;
+  background: #fff;
+}
 .header nav ul li:hover a,
+.header nav ul li:hover button,
 .header nav ul li:hover p{
+  background: var(--main-bg);
   color: #fff;
 }
 .header nav ul li p{
@@ -132,6 +146,7 @@ input {
 .sidebar-allsites .site-name:hover{
   background: var(--gray-shade);
   color: var(--main-bg);
+  transform: scale(1.03);
 }
 .main-info{
   margin:auto;
