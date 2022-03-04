@@ -29,9 +29,9 @@ router.get("/:id", async (req, res) => {
 							});
 						});
 					}
-					const user = await Users.findById(req.session.passport.user);
-					user.MyDownloads.push(Id);
-					await user.save();
+					//const user = await Users.findById(req.session.passport.user);
+					//user.MyDownloads.push(Id);
+					//await user.save();
 					res.send("Your site downloaded please refresh to see it");
 				}
 			);
