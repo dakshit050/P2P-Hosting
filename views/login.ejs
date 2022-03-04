@@ -7,22 +7,22 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </head>
-<body class="bg-dark">
+<body class="bg-dark" style="overflow-x: hidden; background: linear-gradient(315deg,  #000000 0%, #434343 74%);">
 <div class="row mt-5" style="min-width: 500px;">
-	<div class="col-md-10 m-auto">
-		<div class="card card-body">
-			<h1 class="text-center mb-3"><i class="fas fa-sign-in-alt"></i> Login</h1>
+	<div class="col-md-6 m-auto">
+		<div class="card card-body form-contain">
+			<h2 class="text-center mb-3">Login to continue on our platform<i class="fas fa-sign-in-alt"></i> </h2>
 			<%- include('./partials/messages'); %>
 			<form action="/users/login" method="POST">
 				<div class="form-group my-4">
 					<label for="email">Email</label>
-					<input type="email" id="email" name="email" class="form-control" placeholder="Enter Email" />
+					<input type="email" id="email" name="email" class="form-control mt-2" placeholder="Enter Email" />
 				</div>
 				<div class="form-group my-4">
 					<label for="password">Password</label>
-					<input type="password" id="password" name="password" class="form-control" placeholder="Enter Password" />
+					<input type="password" id="password" name="password" class="form-control mt-2" placeholder="Enter Password" />
 				</div>
-				<button type="submit" class="btn btn-primary btn-block">Login</button>
+				<button type="submit" class="btn btn-outline-dark px-4">Login</button>
 			</form>
 			<p class="lead mt-4">No Account? <a href="/users/register">Register</a></p>
 		</div>

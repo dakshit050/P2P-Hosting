@@ -9,6 +9,7 @@
 </head>
 <body>
     <%- include('./partials/header'); %>
+    <div class="wrapper">
         <div class="container form-contain">
 
             <i class="fas fa-cloud-upload-alt"></i>
@@ -16,17 +17,15 @@
             <form id="file-upload" action="/hostnew" method="POST">
                 <div class="mb-3">
                 <label for="SiteName" class="form-label">Give Your Site A Nice Name</label>
-                <input type="text" class="form-control" id="SiteName" placeholder="Enter site name">
+                <input type="text" class="form-control" id="SiteName" placeholder="Enter site name" required>
             </div>
             <div class="mb-3">
                 <label for="path" class="form-label">Where is your project located?? Enter it's path</label>
-                <input type="text" class="form-control" id="path" placeholder="Enter site name">
+                <input type="text" class="form-control" id="path" placeholder="Enter site name" required>
             </div>
-            <!-- <label for="path"></label>
-                <input class="file-input" type="text" name="path" style="background-color: transparent; padding:5px; border-radius: 4px; width: 90%; margin: 10px;"> -->
-                <!-- <button class="submit" style="background-color: #6990f2; padding:5px 10px; border: none; color:white;border-radius: 4px; cursor: pointer;">Host Website</button> -->
-                <button type="submit" class="btn btn-primary mt-3">Let's Host it!!</button>
+                <button type="submit" class="btn btn-primary mt-3 submit">Let's Host it!!</button>
             </form>
         </div>
+    </div>
     
 </body>

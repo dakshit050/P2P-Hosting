@@ -17,6 +17,12 @@
 				<% if(!isMySites){ %>
 					<h1>Global Sites</h1>
 				<% }%>
+				<% if(data.length === 0){ %>
+					<p style="font-size: 1.2rem; font-weight: 500;margin-top: 30px;">Shoot!! Seems like you haven't hosted any sites yet :(</p>
+					<a href="http://localhost:5000/frontend" class="site-name">
+						Host your first site Now!!
+					</a>
+				<% } %>
 				<% data.forEach(function(d){ %>
 					<% const url = "http://localhost:5000/data/"+ d.infoHash %>
 					 <a href=<%=url%> target="_blank" class="site-name">
