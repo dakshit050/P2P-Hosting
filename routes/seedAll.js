@@ -15,7 +15,8 @@ function seedAll() {
 			}
 
 			files.forEach(function (file) {
-				client.seed(path.join(destination, file), { name: "p2p_hosting" }, async function onseed(torrent) {
+				//console.log(file+" this is file");
+				client.seed(path.join(destination, file,'index.html'), async function onseed(torrent) {
 					magnetURI = torrent.magnetURI.split(":")[3].split("&")[0];
 					console.log(magnetURI);
 				});

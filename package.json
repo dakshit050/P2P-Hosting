@@ -22,7 +22,7 @@
 	"devDependencies": {},
 	"scripts": {
 		"start": "node app.js",
-		"start_dev": "cls && nodemon -r dotenv/config app"
+		"start_dev": "cls && node -r dotenv/config app"
 	},
 	"repository": {
 		"type": "git",
